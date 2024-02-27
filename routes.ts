@@ -32,4 +32,6 @@ export const publicRoutes = [
    * The default redirect path after logging in
    * @type {string}
    */
-  export const DEFAULT_LOGIN_REDIRECT = "/settings";
+  export const ADMIN_LOGIN_REDIRECT = "/panel";
+  export const EMPLOYEE_LOGIN_REDIRECT = "/panel";
+  export const DEFAULT_LOGIN_REDIRECT = "/order";
