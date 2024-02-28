@@ -39,7 +39,9 @@ export const login = async (
         );
         return {success: "Confirmation email sent!"};
     }
+    console.log(existingUser.role);
     const redirectTo = existingUser.role === "ADMIN" ? ADMIN_LOGIN_REDIRECT : existingUser.role === "EMPLOYEE" ? EMPLOYEE_LOGIN_REDIRECT : DEFAULT_LOGIN_REDIRECT;
+    console.log(redirectTo);
     try {
         await signIn("credentials", {
             email,
