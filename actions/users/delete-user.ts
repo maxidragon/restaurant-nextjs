@@ -3,7 +3,7 @@
 import {currentUser} from "@/lib/auth";
 import {db} from "@/lib/db";
 
-export const getUsers = async () => {
+export const deleteUser = async (id: string) => {
     const user = await currentUser();
 
     // @ts-ignore
@@ -11,13 +11,11 @@ export const getUsers = async () => {
         throw new Error("You are not authorized to perform this action");
     }
 
-    return db.user.findMany({
-        select: {
-            id: true,
-            email: true,
-            name: true,
-            role: true,
-            image: true,
+    await db.user.delete({
+        where: {
+            id,
         },
     });
-};
+
+    return true;
+}

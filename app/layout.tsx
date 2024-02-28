@@ -3,7 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 import { auth } from '@/auth';
-import {ThemeProvider} from "@/providers/ThemeProvider";
+import {ThemeProvider} from "@/providers/theme-provider";
+import {Toaster} from "@/components/ui/sonner";
+import {ModalProvider} from "@/providers/modal-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +30,9 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
             >
-          {children}
+            <ModalProvider />
+            <Toaster />
+            {children}
         </ThemeProvider>
         </body>
       </html>
