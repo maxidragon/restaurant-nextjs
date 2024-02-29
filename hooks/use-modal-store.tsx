@@ -1,10 +1,12 @@
 import { create } from "zustand";
 import {User} from "@/types";
+import {MenuItem} from "@prisma/client";
 
-export type ModalType = "editUser";
+export type ModalType = "editUser" | "editMenuItem" | "createMenuItem";
 
 interface ModalData {
     user?: User;
+    menuItem?: MenuItem;
 }
 
 

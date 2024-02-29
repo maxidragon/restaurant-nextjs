@@ -1,8 +1,8 @@
 import {Metadata} from "next"
 import Image from "next/image"
-import {MainNav} from "@/app/(protected)/(internal)/(employee)/_components/main-nav"
+import {MainNav} from "@/app/(protected)/(internal)/_components/main-nav"
 import {Search} from "@/app/(protected)/(internal)/(employee)/_components/search"
-import {UserNav} from "@/app/(protected)/(internal)/(employee)/_components/user-nav"
+import {UserNav} from "@/app/(protected)/(internal)/_components/user-nav"
 import {ModeToggle} from "@/components/mode-toggle";
 
 export const metadata: Metadata = {

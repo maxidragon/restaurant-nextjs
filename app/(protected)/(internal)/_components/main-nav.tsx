@@ -20,10 +20,10 @@ export function MainNav({
                 href="/panel"
                 className="text-sm font-medium transition-colors hover:text-primary"
             >
-                Overview
+                Dashboard
             </Link>
             <Link
-                href="/panel/orders"
+                href="/orders"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
                 Orders
@@ -37,7 +37,7 @@ export function MainNav({
                         Users
                     </Link>
                     <Link
-                        href="/panel/menu"
+                        href="/menu"
                         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
                     >
                         Menu

@@ -12,7 +12,7 @@ export const prettyRoleName = (role: string) => {
         case "EMPLOYEE":
             return "Employee";
         case "USER":
-            return "User";
+            return "User";0
         default:
             return "Unknown";
     }

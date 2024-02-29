@@ -1,20 +1,21 @@
 "use client"
 
 import {
-    ColumnDef, ColumnFiltersState,
-    flexRender,
-    getCoreRowModel, getFilteredRowModel,
+    ColumnDef,
+    ColumnFiltersState,
+    getCoreRowModel,
+    getFilteredRowModel,
     getPaginationRowModel,
     getSortedRowModel,
     SortingState,
     useReactTable,
 } from "@tanstack/react-table"
-
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow,} from "@/components/ui/table"
 import {Button} from "@/components/ui/button";
 import {useState} from "react";
 import {Input} from "@/components/ui/input";
+import {MdAdd} from "react-icons/md";
 import DataTableCore from "@/components/data-table-core";
+import {useModal} from "@/hooks/use-modal-store";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
@@ -27,6 +28,7 @@ export function DataTable<TData, TValue>({
                                          }: DataTableProps<TData, TValue>) {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+    const {onOpen} = useModal();
     const table = useReactTable({
         data,
         columns,
@@ -45,17 +47,22 @@ export function DataTable<TData, TValue>({
 
     return (
         <div>
-            <div className="flex items-center py-4">
-                <Input
-                    placeholder="Search names..."
-                    value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-                    onChange={(event) =>
-                        table.getColumn("name")?.setFilterValue(event.target.value)
-                    }
-                    className="max-w-sm"
-                />
+            <div className="flex items-center justify-between">
+                <div className="flex items-center py-4">
+                    <Input
+                        placeholder="Search items..."
+                        value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+                        onChange={(event) =>
+                            table.getColumn("name")?.setFilterValue(event.target.value)
+                        }
+                        className="max-w-sm"
+                    />
+                </div>
+                <Button variant="ghost" onClick={() => onOpen("createMenuItem")}>
+                    <MdAdd className="h-6 w-6"/>
+                </Button>
             </div>
-            <DataTableCore table={table} columns={columns} />
+            <DataTableCore table={table} columns={columns}/>
             <div className="flex items-center justify-end space-x-2 py-4">
                 <Button
                     variant="outline"

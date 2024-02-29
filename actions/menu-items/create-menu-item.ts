@@ -1,13 +1,12 @@
 "use server";
 
-import { currentUser } from "@/lib/auth";
-import { db } from "@/lib/db";
-import { UserSchema } from "@/schemas";
 import * as z from "zod";
+import {MenuItemSchema} from "@/schemas";
+import {currentUser} from "@/lib/auth";
+import {db} from "@/lib/db";
 
-export const updateUser = async (
-    id: string,
-    values: z.infer<typeof UserSchema>
+export const createMenuItem = async (
+    values: z.infer<typeof MenuItemSchema>
 ) => {
     const user = await currentUser();
 
@@ -15,24 +14,22 @@ export const updateUser = async (
     if (!user || user?.role !== "ADMIN") {
         throw new Error("You are not authorized to perform this action");
     }
+
     try {
-        await db.user.update({
-            where: {
-                id: id,
-            },
+        await db.menuItem.create({
             data: {
                 name: values.name,
-                role: values.role,
+                description: values.description,
+                price: +values.price,
             },
         });
     } catch (error) {
         console.log(error);
         return {
-            error: "Failed to update session",
+            error: "Failed to create menu item",
         };
     }
-
     return {
-        success: "User updated successfully",
+        success: "Menu item created successfully",
     };
-};
+}
