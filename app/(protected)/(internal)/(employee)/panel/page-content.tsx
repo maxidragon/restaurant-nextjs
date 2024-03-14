@@ -126,10 +126,7 @@ export const PageContent = () => {
                             </Card>
                             <Card className="col-span-3">
                                 <CardHeader>
-                                    <CardTitle>Recent orders</CardTitle>
-                                    <CardDescription>
-                                        You made 265 sales this month.
-                                    </CardDescription>
+                                    <CardTitle>Pending orders</CardTitle>
                                 </CardHeader>
                                 <CardContent>
                                     <RecentOrders/>
