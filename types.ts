@@ -1,3 +1,5 @@
+import { MenuItem } from "@prisma/client";
+
 export interface User extends PublicUser {
     email: string;
     role: string;
@@ -16,4 +18,8 @@ export interface PendingOrder {
     total: number;
     createdAt: Date;
     user: PublicUser;
+}
+
+export interface OrderedItem extends MenuItem {
+    quantity: number;
 }

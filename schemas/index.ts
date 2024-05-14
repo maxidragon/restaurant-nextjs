@@ -52,3 +52,10 @@ export const MenuItemSchema = z.object({
         message: "Description is required",
     }),
 });
+
+export const OrderSchema = z.object({
+    note: z.string().optional(),
+    address: z.string().min(1, {
+        message: "Address is required",
+    }),
+});

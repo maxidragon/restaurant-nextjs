@@ -1,5 +1,4 @@
 import {Metadata} from "next"
-import Image from "next/image"
 import {MainNav} from "@/app/(protected)/(internal)/_components/main-nav"
 import {Search} from "@/app/(protected)/(internal)/(employee)/_components/search"
 import {UserNav} from "@/components/auth/user-nav";
@@ -13,22 +12,6 @@ export const metadata: Metadata = {
 export default function PanelLayout({children}: {children: React.ReactNode}) {
     return (
         <>
-                <Image
-            <div className="md:hidden">
-                    src="/examples/dashboard-light.png"
-                    width={1280}
-                    height={866}
-                    alt="Dashboard"
-                    className="block dark:hidden"
-                />
-                <Image
-                    src="/examples/dashboard-dark.png"
-                    width={1280}
-                    height={866}
-                    alt="Dashboard"
-                    className="hidden dark:block"
-                />
-            </div>
             <div className="hidden flex-col md:flex">
                 <div className="border-b">
                     <div className="flex h-16 items-center px-4">
