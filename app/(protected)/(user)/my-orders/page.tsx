@@ -1,9 +1,9 @@
 import {DataTable} from "./_components/data-table";
 import {columns} from "./_components/columns";
-import {getAllOrders} from "@/actions/orders/get-all-orders";
+import { getMyOrders } from "@/actions/orders/get-my-orders";
 
-const OrdersPage = async () => {
-    const orders = await getAllOrders();
+const MyOrdersPage = async () => {
+    const orders = await getMyOrders();
     return (
         <div className="container mx-auto py-10">
             <DataTable columns={columns} data={orders} />
@@ -11,4 +11,4 @@ const OrdersPage = async () => {
     );
 };
 
-export default OrdersPage;
+export default MyOrdersPage;

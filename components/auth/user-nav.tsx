@@ -1,5 +1,6 @@
 "use client";
 
+import { logout } from "@/actions/auth/logout";
 import {
     Avatar,
     AvatarFallback,
@@ -17,9 +18,16 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {useCurrentUser} from "@/hooks/use-current-user";
+import { useRouter } from "next/navigation";
 
 export function UserNav() {
     const user = useCurrentUser();
+    const router = useRouter();
+
+    const onLogout = async () => {
+        await logout();
+        router.push("/auth/login");
+    };
 
     return (
         <DropdownMenu>
@@ -47,7 +55,7 @@ export function UserNav() {
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={onLogout}>
                     Log out
                 </DropdownMenuItem>
             </DropdownMenuContent>
