@@ -1,14 +1,17 @@
+import { Button } from "@/components/ui/button";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { OrderedItem } from "@/types";
 import { MenuItem } from "@prisma/client";
+import { MdDelete } from "react-icons/md";
 
 interface ItemsPicker {
   items: OrderedItem[];
   availableItems: MenuItem[];
   handleAddItem: (item: MenuItem) => void;
+  handleRemoveItem: (item: OrderedItem) => void;
 }
 
-const ItemsPicker = ({ items, availableItems, handleAddItem }: ItemsPicker) => {
+const ItemsPicker = ({ items, availableItems, handleAddItem, handleRemoveItem }: ItemsPicker) => {
   return (
     <div>
       <h1>Available Items</h1>
@@ -47,6 +50,11 @@ const ItemsPicker = ({ items, availableItems, handleAddItem }: ItemsPicker) => {
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.quantity}</TableCell>
                 <TableCell>${item.price * item.quantity}</TableCell>
+                <TableCell>
+                  <Button onClick={() => handleRemoveItem(item)}>
+                    <MdDelete />
+                  </Button>
+                </TableCell>
                 </TableRow>
             ))}
             </TableBody>

@@ -22,7 +22,7 @@ export const EditMenuItemModal = () => {
         defaultValues: {
             name: menuItem?.name || "",
             description: menuItem?.description || "",
-            price: menuItem?.price || "0",
+            price: menuItem?.price.toString() || "0",
         },
     });
 

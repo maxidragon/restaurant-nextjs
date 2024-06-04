@@ -40,7 +40,7 @@ export const UpdateUserModal = () => {
         defaultValues: {
             name: data?.user?.name || "",
             email: data?.user?.email || "",
-            role: data?.user?.role || Role.USER,
+            role: data?.user?.role as Role || Role.USER,
         },
     });
 
